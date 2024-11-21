@@ -1,17 +1,17 @@
 from random import *  #*-kõik funktsioonid, randint as rd funktsioonide ümbernimetus
 #import random -> random.randint()
 from math import *
-from tkinter import ROUND #pi kasutamiseks
+from tkinter import * #pi kasutamiseks
 
 
 #Ülesanne 1
-# print("Tere tulemast!")
-# nimi=input("Mis on sinu nimi? ").capitalize() #lower()-aaa,upper()-AAA,capitalize()-Aaa
-# print("Tere tulemast! Tervitan sind ", nimi) 
-# print("Tere tulemast! Tervitan sind "+ nimi)
-# vanus=int(input("Kui vana sa oled? "))
-# print("Tere tulemast! Tervitan sind "+nimi+" Sa oled ",vanus,"aastat vana")
-# print(f"\tTere tulemast! \nTervitan sind {nimi} Sa oled {vanus} aastat vana")
+print("Tere tulemast!")
+nimi=input("Mis on sinu nimi? ").capitalize() #lower()-aaa,upper()-AAA,capitalize()-Aaa
+print("Tere tulemast! Tervitan sind ", nimi) 
+print("Tere tulemast! Tervitan sind "+ nimi)
+vanus=int(input("Kui vana sa oled? "))
+print("Tere tulemast! Tervitan sind "+nimi+" Sa oled ",vanus,"aastat vana")
+print(f"\tTere tulemast! \nTervitan sind {nimi} Sa oled {vanus} aastat vana")
 
 
 #Ülesanne 2

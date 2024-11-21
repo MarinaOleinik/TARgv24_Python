@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TARgv24_Python.py</StartupFile>
+    <StartupFile>Tund1(Math_Random_print_input).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TARgv24_Python.py" />
+    <Compile Include="Tund1%28Math_Random_print_input%29.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
