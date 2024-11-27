@@ -2,19 +2,21 @@ from random import *  #*-kõik funktsioonid, randint as rd funktsioonide ümbern
 #import random -> random.randint()
 from math import *
 from tkinter import * #pi kasutamiseks
-from datetime import *
-tana=date.today().strftime("%B %d, %Y")
-p=date.month()
-print(f"Täna on {tana}, {tana}")
+
 
 #Ülesanne 1
 print("Tere tulemast!")
 nimi=input("Mis on sinu nimi? ").capitalize() #lower()-aaa,upper()-AAA,capitalize()-Aaa
 print("Tere tulemast! Tervitan sind ", nimi) 
 print("Tere tulemast! Tervitan sind "+ nimi)
-vanus=int(input("Kui vana sa oled? "))
-print("Tere tulemast! Tervitan sind "+nimi+" Sa oled ",vanus,"aastat vana")
-print(f"\tTere tulemast! \nTervitan sind {nimi} Sa oled {vanus} aastat vana")
+try:
+    vanus=int(input("Kui vana sa oled? "))
+    print("Tere tulemast! Tervitan sind "+nimi+" Sa oled ",vanus,"aastat vana")
+    print(f"\tTere tulemast! \nTervitan sind {nimi} Sa oled {vanus} aastat vana")
+except:
+    print("On vaja numbreid sisestda!")
+
+
 
 
 #Ülesanne 2
