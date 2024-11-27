@@ -2,7 +2,10 @@ from random import *  #*-kõik funktsioonid, randint as rd funktsioonide ümbern
 #import random -> random.randint()
 from math import *
 from tkinter import * #pi kasutamiseks
-
+from datetime import *
+tana=date.today().strftime("%B %d, %Y")
+p=date.month()
+print(f"Täna on {tana}, {tana}")
 
 #Ülesanne 1
 print("Tere tulemast!")
