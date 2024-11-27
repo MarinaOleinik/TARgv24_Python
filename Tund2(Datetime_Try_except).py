@@ -52,3 +52,19 @@ Lk=2*pi*R
 Skv=(2*R)**2
 Lkv=2*R*4
 print(f"Ringi pindala on {Sk}\nRingi ümnbermõõt on {Lk}\nRuudu pindala on {Skv}\nRuudu ümbermõõt on {Lkv}\n")
+
+
+#Ülesanne 4 
+d=2.575 # mündi d sm +
+maa=6378 #maa radius km
+maa*=100000 #maa radius sm + maa=maa*100000
+Lmaa=2*pi*maa
+
+kogus=Lmaa/d
+#'{:,.3f}'.format(kogus)
+print(f"On vaja {int(kogus):,d} mündi.\nMeil on vaja {int(kogus*2):,d} eur")
+
+#Ülesanne 5 kill-koll kill-koll killadi-koll kill-koll kill-koll killadi-koll kill-koll kill-koll kill-koll kill-koll
+a="kill-koll "
+b="killadi-koll "
+print(a*2,b,a*2,b,a*4)
