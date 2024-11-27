@@ -65,6 +65,6 @@ kogus=Lmaa/d
 print(f"On vaja {int(kogus):,d} mündi.\nMeil on vaja {int(kogus*2):,d} eur")
 
 #Ülesanne 5 kill-koll kill-koll killadi-koll kill-koll kill-koll killadi-koll kill-koll kill-koll kill-koll kill-koll
-a="kill-koll "
-b="killadi-koll "
+a="kill-koll ".capitalize()
+b="killadi-koll ".capitalize()
 print(a*2,b,a*2,b,a*4)
