@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund4(Kordused).py</StartupFile>
+    <StartupFile>Sirakus.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Sirakus.py" />
     <Compile Include="Tund1%28Math_Random_print_input%29.py" />
     <Compile Include="Tund2%28Datetime_Try_except%29.py" />
     <Compile Include="Tund3%28IF%29.py" />

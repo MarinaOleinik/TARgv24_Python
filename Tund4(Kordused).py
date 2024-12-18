@@ -1,3 +1,4 @@
+
 #Ül 15
 for read in range(20):
     for rida in range(10):
