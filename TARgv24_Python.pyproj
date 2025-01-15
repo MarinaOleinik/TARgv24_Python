@@ -26,6 +26,8 @@
     <Compile Include="Tund2%28Datetime_Try_except%29.py" />
     <Compile Include="Tund3%28IF%29.py" />
     <Compile Include="Tund4%28Kordused%29.py" />
+    <Compile Include="Tund5%28List_IseseisevtööVideo%29.py" />
+    <Compile Include="Tund6%28Listid%29.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
