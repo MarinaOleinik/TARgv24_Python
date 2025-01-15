@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Sirakus.py</StartupFile>
+    <StartupFile>Tund6(Listid).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
