@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund6(Listid).py</StartupFile>
+    <StartupFile>Tund7(Def).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,6 +28,8 @@
     <Compile Include="Tund4%28Kordused%29.py" />
     <Compile Include="Tund5%28List_IseseisevtööVideo%29.py" />
     <Compile Include="Tund6%28Listid%29.py" />
+    <Compile Include="Tund7%28Def%29.py" />
+    <Compile Include="Tund7Modul.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
