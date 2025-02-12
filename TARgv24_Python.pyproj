@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund7(Def).py</StartupFile>
+    <StartupFile>Tund9(Too_failidega_Dict).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,14 @@
     <Compile Include="Tund6%28Listid%29.py" />
     <Compile Include="Tund7%28Def%29.py" />
     <Compile Include="Tund7Modul.py" />
+    <Compile Include="Tund8_9_Moodul.py" />
+    <Compile Include="Tund8%28Autor_Reg_Files_Email%29.py" />
+    <Compile Include="Tund9%28Too_failidega_Dict%29.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Kasutajad.txt" />
+    <Content Include="riigid_pealinnad.txt" />
+    <Content Include="Salasõnad.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
