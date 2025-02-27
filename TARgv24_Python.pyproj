@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund11(Tkinter).py</StartupFile>
+    <StartupFile>Ruutvõrrand_pack_grid.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Ruutvõrrand_pack_grid.py" />
     <Compile Include="Sirakus.py" />
     <Compile Include="Tund1%28Math_Random_print_input%29.py" />
     <Compile Include="Tund10Matplotlib.py" />
@@ -37,7 +38,9 @@
     <Compile Include="Tund9%28Too_failidega_Dict%29.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="background.jpg" />
     <Content Include="Kasutajad.txt" />
+    <Content Include="Mesilane.png" />
     <Content Include="riigid_pealinnad.txt" />
     <Content Include="Salasõnad.txt" />
   </ItemGroup>

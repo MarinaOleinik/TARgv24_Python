@@ -46,6 +46,7 @@ def registreerimine(kasutajad:list,paroolid:list)->any:
     #email(mail)
     return kasutajad, paroolid
 def räägimine(tekst:str,keel:str):
+
     obj=gTTS(text=tekst,lang=keel,slow=False).save("heli.mp3")
     system("heli.mp3")
 def autoriseerimine(kasutajad:list,paroolid:list):
