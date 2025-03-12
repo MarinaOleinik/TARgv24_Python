@@ -113,11 +113,11 @@ execute_query(conn,insert_users2)
 execute_query(conn,create_gender_table)
 execute_query(conn,insert_gender)
 users=execute_read_query(conn,select_users2)
-print("Kautajate tabel 1,2:")
+print("Kasutajate tabel 1,2:")
 for user in users:
     print(user)
 users_genders=execute_read_query(conn,select_users2_gender)
-print("Kautajate tabel mees, naine:")
+print("Kasutajate tabel mees, naine:")
 for gender in users_genders:
     print(gender)
 
