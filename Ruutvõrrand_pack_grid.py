@@ -4,6 +4,7 @@ from tkinter import messagebox
 from math import *
 import numpy as np
 import matplotlib.pyplot as plt
+from tkinter import ttk
 
 graf=False
 def Lahenda():
@@ -86,6 +87,7 @@ def Aken_grid():
     aken.geometry("650x260")
     aken.title("Ruutvõrrand")
     aken.resizable(False, False)
+
     f1=Frame(aken,width=650,height=260)
     f1.pack(side=TOP)   
     lbl=Label(f1,text="Ruutvõrrandite lahendamine", font="Calibri 26",fg="green",bg="lightblue")
@@ -108,6 +110,15 @@ def Aken_grid():
     btn_lahenda.grid(row=1, column=6)
     btn_graafik=Button(f1, text="Graafik",font="Calibri 26",fg="green",command=lambda:Graafik(graf))
     btn_graafik.grid(row=1, column=7)
+
+    canvas = Canvas(f1, width=400, height=200, bg='white', highlightthickness=0)
+    canvas.grid(row=3, column=0,columnspan=8)
+
+    canvas.create_text(200, 100, text="Tere tulemast!", font=("Arial", 30), fill="black")
+
+
+
+
     aken.mainloop()
 
 #Aken_pack()
