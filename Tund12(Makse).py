@@ -1,6 +1,5 @@
 import requests
 import json
-import base64
 import webbrowser
 import tkinter as tk
 from tkinter import messagebox
@@ -9,7 +8,7 @@ import random
 import string
 import smtplib
 from email.mime.text import MIMEText
-
+#https://support.every-pay.com/merchant-support/testing-open-banking-payments-in-demo-environment/
 
 # EveryPay данные
 API_URL = "https://igw-demo.every-pay.com/api/v4/payments/oneoff"

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Makse.py</StartupFile>
+    <StartupFile>Tund12(Makse).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Makse.py" />
+    <Compile Include="Tund12%28Makse%29.py" />
     <Compile Include="Ruutvõrrand_pack_grid.py" />
     <Compile Include="Sirakus.py" />
     <Compile Include="Tund1%28Math_Random_print_input%29.py" />
