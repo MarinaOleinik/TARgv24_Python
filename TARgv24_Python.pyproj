@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund12(Makse).py</StartupFile>
+    <StartupFile>Tund12(Sqlite3).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,6 +27,7 @@
     <Compile Include="Tund1%28Math_Random_print_input%29.py" />
     <Compile Include="Tund10Matplotlib.py" />
     <Compile Include="Tund11%28Tkinter%29.py" />
+    <Compile Include="Tund12%28Sqlite3%29.py" />
     <Compile Include="Tund2%28Datetime_Try_except%29.py" />
     <Compile Include="Tund3%28IF%29.py" />
     <Compile Include="Tund4%28Kordused%29.py" />
@@ -44,6 +45,9 @@
     <Content Include="Mesilane.png" />
     <Content Include="riigid_pealinnad.txt" />
     <Content Include="Salasõnad.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
