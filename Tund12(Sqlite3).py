@@ -104,10 +104,7 @@ users2.Lname,
 gender.Nimetus 
 from users2 
 INNER JOIN gender ON users2.GenderId=gender.Id"""
-
-
 filename=path.abspath(__file__)
-
 dbdir=filename.rstrip('Tund12(Sqlite3).py')
 dbpath=path.join(dbdir,"data.db")
 conn=create_connect(dbpath)
@@ -116,12 +113,12 @@ execute_query(conn,insert_users2)
 execute_query(conn,create_gender_table)
 execute_query(conn,insert_gender)
 users=execute_read_query(conn,select_users2)
-print("Kautajate tabel 1:")
+print("Kautajate tabel 1,2:")
 for user in users:
     print(user)
-genders=execute_read_query(conn,select_users2_gender)
-print("Kautajate tabel 2:")
-for gender in genders:
+users_genders=execute_read_query(conn,select_users2_gender)
+print("Kautajate tabel mees, naine:")
+for gender in users_genders:
     print(gender)
 
 # users=execute_read_query(conn,select_users2)
