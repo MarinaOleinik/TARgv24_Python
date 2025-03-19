@@ -45,8 +45,6 @@ def is_year_leap(aasta:int)->bool:
         v=False
     return v
 
-
-
 def square(a:float)->any:
     """
     """
