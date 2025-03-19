@@ -32,6 +32,49 @@ INSERT INTO movies (title, director, release_year, genre, duration, rating, lang
 """
 
 global entries
+
+def create_database():
+    try:   
+        filename=path.abspath(__file__)
+        dbdir=filename.rstrip('DB_Tkinter.py')
+        dbpath=path.join(dbdir,'movies.db')
+        conn = sqlite3.connect(dbpath)
+        cursor = conn.cursor()
+        print("Ühendus loodud")
+        cursor.execute(create_table)
+        #kontroll kas on andmeid tabelis
+        cursor.execute("SELECT COUNT(*) FROM movies")
+        row_count = cursor.fetchone()[0]
+        if row_count==0:
+            cursor.execute(insert_into)        
+        conn.commit()
+
+    except sqlite3.Error as error:
+        print("Tekkis viga andmebaasiga ühendamisel:", error)
+    finally:
+        if conn:
+            conn.close()
+def insert_data_to_database():
+    try:
+        filename=path.abspath(__file__)
+        dbdir=filename.rstrip('DB_Tkinter.py')
+        dbpath=path.join(dbdir,'movies.db')
+        conn = sqlite3.connect(dbpath)
+        cursor = conn.cursor()
+        print("Ühendus loodud")
+        # Teostame päringu, et lugeda kõik andmed tabelist 'movies'
+        cursor.execute("SELECT * FROM movies")
+        rows = cursor.fetchall()
+        # Väljastame kõik loetud read
+        for row in rows:
+            print(row)
+
+    except sqlite3.Error as error:
+        print("Tekkis viga andmebaasiga ühendamisel või päringu teostamisel:", error)
+    finally:
+        if conn:
+            conn.close()
+            print("Ühendus suleti")
 def validate_data():
     global entries
     title = entries["Pealkiri"].get()
@@ -85,17 +128,19 @@ def load_data_from_db(tree, search_query=""):
     for item in tree.get_children():
         tree.delete(item)
 
+    # Loo ühendus SQLite andmebaasiga
     conn = sqlite3.connect('movies.db')
     cursor = conn.cursor()
 
+    # Tee päring andmebaasist andmete toomiseks, koos ID-ga, kuid ID ei kuvata
     if search_query:
-        cursor.execute("SELECT title, director, release_year, genre, duration, rating, language, country, description FROM movies WHERE title LIKE ?", ('%' + search_query + '%',))
+        cursor.execute("SELECT id, title, director, release_year, genre, duration, rating, language, country, description FROM movies WHERE title LIKE ?", ('%' + search_query + '%',))
     else:
-        cursor.execute("SELECT title, director, release_year, genre, duration, rating, language, country, description FROM movies")
+        cursor.execute("SELECT id, title, director, release_year, genre, duration, rating, language, country, description FROM movies")
+
     rows = cursor.fetchall()
     for row in rows:
-        tree.insert("", "end", values=row)
-    
+        tree.insert("", "end", values=row[1:], iid=row[0])  # iid määratakse ID-ks
     conn.close()
 def on_search():
     search_query = search_entry.get()
@@ -118,44 +163,132 @@ def add_data():
     submit_button = tk.Button(root, text="Sisesta andmed", command=insert_data)
     submit_button.grid(row=len(labels), column=0, columnspan=2, pady=20)
     root.mainloop()
-try:
-    
-    filename=path.abspath(__file__)
-    dbdir=filename.rstrip('DB_Tkinter.py')
-    dbpath=path.join(dbdir,'movies.db')
-    conn = sqlite3.connect(dbpath)
+def update_record(record_id, entries, window):
+    # Koguge andmed sisestusväljadest
+    title = entries["Pealkiri"].get()
+    director = entries["Režissöör"].get()
+    release_year = entries["Aasta"].get()
+    genre = entries["Žanr"].get()
+    duration = entries["Kestus"].get()
+    rating = entries["Reiting"].get()
+    language = entries["Keel"].get()
+    country = entries["Riik"].get()
+    description = entries["Kirjeldus"].get()
+
+    # Andmete uuendamine andmebaasis
+    conn = sqlite3.connect('movies.db')
     cursor = conn.cursor()
-    print("Ühendus loodud")
-    cursor.execute(create_table)
-    cursor.execute(insert_into)
+    cursor.execute("""
+        UPDATE movies
+        SET title=?, director=?, release_year=?, genre=?, duration=?, rating=?, language=?, country=?, description=?
+        WHERE id=?
+    """, (title, director, release_year, genre, duration, rating, language, country, description, record_id))
     conn.commit()
+    conn.close()
 
-except sqlite3.Error as error:
-    print("Tekkis viga andmebaasiga ühendamisel:", error)
-finally:
-    if conn:
-        conn.close()
+    # Värskenda Treeview tabelit
+    load_data_from_db(tree)
 
-try:
-    filename=path.abspath(__file__)
-    dbdir=filename.rstrip('DB_Tkinter.py')
-    dbpath=path.join(dbdir,'movies.db')
-    conn = sqlite3.connect(dbpath)
+    # Sulge muutmise aken
+    window.destroy()
+
+    messagebox.showinfo("Salvestamine", "Andmed on edukalt uuendatud!")
+def update_record(record_id, entries, window):
+    # Koguge andmed sisestusväljadest
+    title = entries["Pealkiri"].get()
+    director = entries["Režissöör"].get()
+    release_year = entries["Aasta"].get()
+    genre = entries["Žanr"].get()
+    duration = entries["Kestus"].get()
+    rating = entries["Reiting"].get()
+    language = entries["Keel"].get()
+    country = entries["Riik"].get()
+    description = entries["Kirjeldus"].get()
+
+    # Andmete uuendamine andmebaasis
+    conn = sqlite3.connect('movies.db')
     cursor = conn.cursor()
-    print("Ühendus loodud")
-    # Teostame päringu, et lugeda kõik andmed tabelist 'movies'
-    cursor.execute("SELECT * FROM movies")
-    rows = cursor.fetchall()
-    # Väljastame kõik loetud read
-    for row in rows:
-        print(row)
+    cursor.execute("""
+        UPDATE movies
+        SET title=?, director=?, release_year=?, genre=?, duration=?, rating=?, language=?, country=?, description=?
+        WHERE id=?
+    """, (title, director, release_year, genre, duration, rating, language, country, description, record_id))
+    conn.commit()
+    conn.close()
 
-except sqlite3.Error as error:
-    print("Tekkis viga andmebaasiga ühendamisel või päringu teostamisel:", error)
-finally:
-    if conn:
-        conn.close()
-        print("Ühendus suleti")
+    # Värskenda Treeview tabelit
+    load_data_from_db(tree)
+
+    # Sulge muutmise aken
+    window.destroy()
+
+    messagebox.showinfo("Salvestamine", "Andmed on edukalt uuendatud!")
+def open_update_window(record_id):
+    # Loo uus aken
+    update_window = tk.Toplevel(root)
+    update_window.title("Muuda filmi andmeid")
+
+    # Loo andmebaasi ühendus ja toomine olemasolevad andmed
+    conn = sqlite3.connect('movies.db')
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT title, director, release_year, genre, duration, rating, language, country, description
+        FROM movies
+        WHERE id=?
+    """, (record_id,))
+    record = cursor.fetchone()
+    conn.close()
+
+    # Veergude nimed ja vastavad sisestusväljad
+    labels = ["Pealkiri", "Režissöör", "Aasta", "Žanr", "Kestus", "Reiting", "Keel", "Riik", "Kirjeldus"]
+    entries = {}
+
+    for i, label in enumerate(labels):
+        tk.Label(update_window, text=label).grid(row=i, column=0, padx=10, pady=5, sticky=tk.W)
+        entry = tk.Entry(update_window, width=50)
+        entry.grid(row=i, column=1, padx=10, pady=5)
+        entry.insert(0, record[i])
+        entries[label] = entry
+
+    # Salvestamise nupp
+    save_button = tk.Button(update_window, text="Salvesta", command=lambda: update_record(record_id, entries, update_window))
+    save_button.grid(row=len(labels), column=0, columnspan=2, pady=10)
+def on_update():
+    selected_item = tree.selection()  # Võta valitud rida
+    if selected_item:
+        record_id = selected_item[0]  # iid (ID)
+        open_update_window(record_id)
+    else:
+        messagebox.showwarning("Valik puudub", "Palun vali kõigepealt rida!")
+def on_delete():
+    selected_item = tree.selection()  # Võta valitud rida
+    if selected_item:
+        record_id = selected_item[0]  # iid (ID)
+        confirm = messagebox.askyesno("Kinnita kustutamine", "Kas oled kindel, et soovid selle rea kustutada?")
+        if confirm:
+            try:
+                # Loo andmebaasi ühendus
+                conn = sqlite3.connect('movies.db')
+                cursor = conn.cursor()
+               
+                # Kustuta kirje
+                cursor.execute("DELETE FROM movies WHERE id=?", (record_id,))
+                conn.commit()
+                conn.close()
+               
+                # Värskenda Treeview tabelit
+                load_data_from_db(tree)
+               
+                messagebox.showinfo("Edukalt kustutatud", "Rida on edukalt kustutatud!")
+            except sqlite3.Error as e:
+                messagebox.showerror("Viga", f"Andmebaasi viga: {e}")
+    else:
+        messagebox.showwarning("Valik puudub", "Palun vali kõigepealt rida!")
+
+
+
+create_database()
+insert_data_to_database()
 
 root = tk.Tk()
 root.title("Filmid")
@@ -169,8 +302,12 @@ search_entry = tk.Entry(search_frame)
 search_entry.pack(side=tk.LEFT, padx=10)
 search_button = tk.Button(search_frame, text="Otsi", command=on_search)
 search_button.pack(side=tk.LEFT)
-open_button = tk.Button(root, text="Lisa andmeid", command=add_data)
-open_button.pack(pady=20)
+open_button = tk.Button(search_frame, text="Lisa andmeid", command=add_data)
+open_button.pack(pady=20,side=tk.RIGHT)
+update_button = tk.Button(search_frame, text="Uuenda", command=on_update)
+update_button.pack(pady=10,side=tk.RIGHT)
+delete_button = tk.Button(search_frame, text="Kustuta", command=on_delete)
+delete_button.pack(pady=10,side=tk.RIGHT)
 
 frame = tk.Frame(root)
 frame.pack(pady=20, fill=tk.BOTH, expand=True)
