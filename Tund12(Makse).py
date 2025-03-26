@@ -33,7 +33,7 @@ def saada_email(to_email, payment_reference):
     content = f"Tere!\n\nTeie makse (ID: {payment_reference}) õnnestus edukalt.\n\nAitäh!"
     msg = MIMEText(content)
     msg["Subject"] = "Makse kinnitamine"
-    msg["From"] = sender
+    msg["From"] = f"Sõbralik saataja <{sender}>"
     msg["To"] = to_email
 
     try:
@@ -51,10 +51,10 @@ def logi_makse(payment_reference, status):
     with open("maksete_logi.txt", "a", encoding="utf-8") as file:
         file.write(f"{datetime.now()} - {payment_reference} - {status}\n")
 
-
+global client_email
 # Проверка статуса платежа
 def kontrolli_makset():
-    global payment_reference
+    global payment_reference,client_email
     if not payment_reference:
         messagebox.showerror("Ошибка", "Сначала нужно создать платёж.")
         return
@@ -73,6 +73,7 @@ def kontrolli_makset():
 
         if seisund == "settled":
             saada_email("client@example.com", payment_reference)
+            saada_email(client_email, payment_reference)#----
     else:
         messagebox.showerror("Ошибка", f"Не удалось проверить платёж: {response.text}")
 
@@ -82,10 +83,11 @@ def kontrolli_makset():
 def create_payment():
     global payment_reference
     amount = amount_entry.get().strip()
+    client_email=email_entry.get()#---------------
+    print(client_email)#---------------
     if not amount or not amount.replace(".", "", 1).isdigit():
         messagebox.showerror("Ошибка", "Введите корректную сумму")
         return
-
     data = {
         "api_username": API_USERNAME,
         "account_name": ACCOUNT_NAME,
@@ -111,8 +113,7 @@ def create_payment():
         webbrowser.open(payment_link)
     else:
         messagebox.showerror("Ошибка", f"Не удалось создать платёж: {response.status_code}\n{response.text}")
-
-
+    return client_email
 # GUI
 app = tk.Tk()
 app.title("Оплата через EveryPay")
@@ -122,6 +123,11 @@ tk.Label(app, text="Введите сумму для оплаты:", font=("Aria
 
 amount_entry = tk.Entry(app, font=("Arial", 14))
 amount_entry.pack(pady=5)
+
+tk.Label(app, text="Введите email:", font=("Arial", 12)).pack(pady=10)
+
+email_entry = tk.Entry(app, font=("Arial", 14))
+email_entry.pack(pady=5)
 
 pay_button = tk.Button(app, text="Оплатить", font=("Arial", 14), command=create_payment, bg="green", fg="white")
 pay_button.pack(pady=10)
