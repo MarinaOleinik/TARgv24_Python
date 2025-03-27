@@ -137,3 +137,20 @@ def XOR_uncipher(kodeeritud_text:str, võti:int)->str:
     """
     dekodeeritud_text= ''.join(chr(ord(char) ^ võti) for char in kodeeritud_text)
     return dekodeeritud_text
+#9
+def average(numbers):
+    if not numbers:
+        return None
+    return sum(numbers) / len(numbers)
+#10
+def min_max(numbers):
+    if not numbers:
+        return None, None
+    return min(numbers), max(numbers)
+#11
+def unique_elements(lst):
+    result = []
+    for item in lst:
+        if item not in result:
+            result.append(item)
+    return result
