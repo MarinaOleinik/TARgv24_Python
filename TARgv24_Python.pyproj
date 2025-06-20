@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>70f0e6be-ecd4-41ed-8599-b65e56c6a3dc</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund12(Makse).py</StartupFile>
+    <StartupFile>Too.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,7 +23,8 @@
   <ItemGroup>
     <Compile Include="API_kasutamine.py" />
     <Compile Include="Canvas_kasutamine.py" />
-    <Compile Include="DB_Tkinter.py" />
+    <Compile Include="Too.py" />
+    <Compile Include="Tund12%28DB_Tkinter%29.py" />
     <Compile Include="Filmid_Table.py" />
     <Compile Include="Tund12%28Makse%29.py" />
     <Compile Include="Ruutvõrrand_pack_grid.py" />

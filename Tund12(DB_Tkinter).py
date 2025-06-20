@@ -32,7 +32,7 @@ INSERT INTO movies (title, director, release_year, genre, duration, rating, lang
 """
 
 global entries
-
+global conn
 def create_database():
     try:   
         filename=path.abspath(__file__)
@@ -42,7 +42,6 @@ def create_database():
         cursor = conn.cursor()
         print("Ühendus loodud")
         cursor.execute(create_table)
-        #kontroll kas on andmeid tabelis
         cursor.execute("SELECT COUNT(*) FROM movies")
         row_count = cursor.fetchone()[0]
         if row_count==0:

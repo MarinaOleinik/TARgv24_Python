@@ -136,7 +136,7 @@ def loe_ankeet(fail:str)->any:
         
     fail.close()
     return kus,vas #,kus_vas
-
+#tung frtg hogp vmfg 
 import smtplib,ssl 
 from email.message import EmailMessage
 #https://myaccount.google.com/apppasswords Rakenduste paroolid
